@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../config/config.dart';
+import 'package:dream_strategy_app/config/env_config.dart';
 
 typedef HttpClientCallback = void Function(dynamic data);
 
@@ -8,7 +8,7 @@ class HttpClient {
 
   HttpClient() {
     BaseOptions options = BaseOptions(
-      baseUrl: '${Config.siteUrl}/v3/api',
+      baseUrl: '${EnvConfig.siteUrl}/v3/api',
       connectTimeout: Duration(seconds: 5),
       receiveTimeout: Duration(seconds: 5),
     );
