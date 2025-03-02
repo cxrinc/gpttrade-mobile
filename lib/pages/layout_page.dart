@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'enduser/top_page.dart';
-import 'enduser/crucloop2_page.dart';
-import 'enduser/crucloop3_page.dart';
-import 'enduser/my_page.dart';
+
+import 'crucloop2_page.dart';
+import 'crucloop3_page.dart';
+import 'myPage/my_page.dart';
+import 'top/top_page.dart';
 
 class LayoutPage extends StatefulWidget {
   const LayoutPage({super.key, required this.title});
