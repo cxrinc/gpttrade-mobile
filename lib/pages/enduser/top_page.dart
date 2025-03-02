@@ -1,5 +1,5 @@
+import 'package:dream_strategy_app/widgets/top/information_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:dream_strategy_app/widgets/enduser/top/information_widget.dart';
 
 class TopPage extends StatelessWidget {
   const TopPage({super.key});

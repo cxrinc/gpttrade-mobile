@@ -1,6 +1,6 @@
-import 'package:intl/intl.dart';
+import 'package:dream_strategy_app/apis/custom_dio.dart';
+import 'package:dream_strategy_app/apis/top_client.dart';
 import 'package:flutter/material.dart';
-import 'package:dream_strategy_app/apis/top_api.dart';
 
 class InformationWidget extends StatefulWidget {
   const InformationWidget({super.key});
@@ -8,6 +8,8 @@ class InformationWidget extends StatefulWidget {
   @override
   State<InformationWidget> createState() => _InformationWidgetState();
 }
+
+final topClient = TopClient(customDio);
 
 class _InformationWidgetState extends State<InformationWidget> {
   String _totalUserCount = '-';
@@ -19,23 +21,13 @@ class _InformationWidgetState extends State<InformationWidget> {
   void initState() {
     super.initState();
 
-    TopApi.getInfomationData((data) {
-      if (data["bfStatus"] == "ok") {
-        setState(() {
-          _totalUserCount = NumberFormat.decimalPattern().format(
-            data["reportSummary"]["totalUserCount"],
-          );
-          _activeUserCount = NumberFormat.decimalPattern().format(
-            data["reportSummary"]["activeUserCount"],
-          );
-          _totalCapital = NumberFormat.decimalPattern().format(
-            data["reportSummary"]["totalCapital"],
-          );
-          _totalTradingValue = NumberFormat.decimalPattern().format(
-            data["reportSummary"]["totalTradingValue"],
-          );
-        });
-      }
+    topClient.getSummaryReport().then((data) {
+      setState(() {
+        _totalUserCount = data.totalUserCount.toString();
+        _activeUserCount = data.activeUserCount.toString();
+        _totalCapital = data.totalCapital.toString();
+        _totalTradingValue = data.totalTradingValue.toString();
+      });
     });
   }
 
